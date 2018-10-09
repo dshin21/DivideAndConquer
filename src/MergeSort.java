@@ -24,25 +24,23 @@ public class MergeSort {
         int mid = A.size() / 2;
 
         if ( A.size() > 1 ) {
-            for ( int i = 0; i < mid; i++ )
-                B.add( A.get( i ) );
-            for ( int j = mid; j < A.size(); j++ )
-                C.add( A.get( j ) );
-
+            for ( int i = 0; i < mid; i++ ) B.add( A.get( i ) );
+            for ( int j = mid; j < A.size(); j++ ) C.add( A.get( j ) );
             B = mergeSort( B );
             C = mergeSort( C );
-            merge( B, C, A );
+            merge( C, B, A );
         }
         return A;
     }
 
-    private static void merge( ArrayList<Integer> B, ArrayList<Integer> C, ArrayList<Integer> A ) {
+    private static void merge( ArrayList<Integer> C,
+                               ArrayList<Integer> B,
+                               ArrayList<Integer> A ) {
         int a = 0;
         int b = 0;
         int c = 0;
         ArrayList<Integer> temp;
         int index;
-
         while ( a < B.size() && b < C.size() ) {
             if ( B.get( a ) <= C.get( b ) ) {
                 A.set( c, B.get( a ) );
@@ -53,7 +51,6 @@ public class MergeSort {
             }
             c++;
         }
-
         if ( a == B.size() ) {
             temp = C;
             index = b;
@@ -61,7 +58,6 @@ public class MergeSort {
             temp = B;
             index = a;
         }
-
         for ( int i = index; i < temp.size(); i++ ) {
             A.set( c, temp.get( i ) );
             c++;

@@ -11,16 +11,12 @@ public class LargestNumberPosition {
 
     private static int findPosition( int[] inputArray, int head, int tail ) {
         int max;
-
-        if ( head == tail )
-            max = head;
+        if ( head == tail ) max = head;
         else {
             int headMax = findPosition( inputArray, head, ( head + tail ) / 2 );
             int tailMax = findPosition( inputArray, ( ( head + tail ) / 2 ) + 1, tail );
-            if ( inputArray[ headMax ] > inputArray[ tailMax ] )
-                max = headMax;
-            else
-                max = tailMax;
+            if ( inputArray[ headMax ] > inputArray[ tailMax ] ) max = headMax;
+            else max = tailMax;
         }
         return max;
     }
